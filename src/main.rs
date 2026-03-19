@@ -95,7 +95,12 @@ fn main() {
         rl.load_shader_from_memory(&thread, None, Some(include_str!("../shaders/spotlight.fs")));
     let mut rl_camera = Camera2D::default();
     rl_camera.zoom = 1.0;
-    // TODO: Get the current monitor position in virtual space and put the camera there
+
+    // Set the frame to the main monitor position
+    // Maybe should comment out this line if there's
+    // only 1 monitor
+    rl_camera.target = Vector2::new(1920.0, 0.0);
+
     let mut delta_scale = 0f64;
     let mut scale_pivot = rl.get_mouse_position();
     let mut velocity = Vector2::default();
